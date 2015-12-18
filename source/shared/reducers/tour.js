@@ -17,7 +17,8 @@ export const INITIAL_STATE = {
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0]
-  ]
+  ],
+  immobulus: false
 };
 
 const validateCoords = coord => {
@@ -40,6 +41,12 @@ const validateCoords = coord => {
         return undefined;
       }
   },
+  exploreKnightMove = (coord, board) => {
+    const delta = [[1, 2], [-1, 2], [-2, 1], [-2, -1], [-1, -2], [1, -2], [2, -1], [2, 1]];
+    return delta
+      .filter(d => typeof validateCoords([coord[0] + d[0], coord[1] + d[1]]) !== 'undefined')
+      .some(d => board[coord[0] + d[0]][coord[1] + d[1]] === 0);
+  },
   toggleCoord = (board, coord) => [
     ...board.slice(0, coord[0]),
     [...board[coord[0]].slice(0, coord[1]), board[coord[0]][coord[1]] === 0 ? 1 : 0, ...board[coord[0]].slice(coord[1] + 1)],
@@ -56,7 +63,8 @@ const validateCoords = coord => {
       moves: [...moves, coord],
       current: current + 1,
       error: undefined,
-      board: toggleCoord(board, coord)
+      board: toggleCoord(board, coord),
+      immobulus: !exploreKnightMove(coord, board)
     };
   },
   init = (coord, board) => {

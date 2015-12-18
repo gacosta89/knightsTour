@@ -200,6 +200,46 @@ test('tour reducer', nest => {
     assert.end();
   });
 
+  nest.test('... immobulus state', assert => {
+    const before = {
+      ...INITIAL_STATE,
+      moves: [[1, 1]],
+      current: 0,
+      error: undefined,
+      board: [
+        [0, 0, 1, 0, 1, 0, 0, 0],
+        [0, 1, 0, 0, 0, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 1, 0, 0],
+        [0, 0, 1, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+      expected = {
+        ...INITIAL_STATE,
+        moves: [[1, 1], [2, 3]],
+        current: 1,
+        error: undefined,
+        immobulus: true,
+        board: [
+          [0, 0, 1, 0, 1, 0, 0, 0],
+          [0, 1, 0, 0, 0, 1, 0, 0],
+          [0, 0, 0, 1, 0, 0, 0, 0],
+          [0, 1, 0, 0, 0, 1, 0, 0],
+          [0, 0, 1, 0, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0]
+        ]
+      },
+      actual = reducer(before, tourMove([2, 3]));
+
+    assert.deepEqual(actual, expected, 'It should set immobulus to true.');
+    assert.end();
+  });
+
   nest.test('... redo', assert => {
     const before = {
       ...INITIAL_STATE,
@@ -236,6 +276,14 @@ test('tour reducer', nest => {
       actual = reducer(before, tourRedo());
 
     assert.deepEqual(actual, expected, 'It should set current to the next coord and set next coord to 1.');
+    assert.end();
+  });
+
+  nest.test('... undefined state and action', assert => {
+    const expected = INITIAL_STATE,
+      actual = reducer(undefined, undefined);
+
+    assert.deepEqual(actual, expected, 'It should return the initial state.');
     assert.end();
   });
 });

@@ -10,7 +10,7 @@
     "server": ".\\scripts\\env.bat && babel-node source/server/index.js",
     "test": ".\\scripts\\env.bat && babel-node source/test/index.js",
     "lint": "eslint source",
-    "watch": "watch 'clear && npm run lint -s && npm run test -s' source",
+    "watch": "watch \"cls && npm run lint -s && npm run test -s\" source",
     "check": "npm run lint && npm run test && npm outdated --depth=0",
     "update": "updtr"
   },

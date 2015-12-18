@@ -1,6 +1,8 @@
 import express from 'express';
 import webpack from 'webpack';
 import config from './webpack.config.dev';
+import settings from 'server/settings';
+import path from 'path';
 
 import mainRoute from 'server/routes/main';
 
@@ -15,6 +17,11 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 
 app.get('/', mainRoute);
+
+const buildDir = '/build';
+const staticDir = path.join(settings.APP_HOME, buildDir);
+
+app.use('/static', express.static(staticDir));
 
 app.listen(3000, 'localhost', (err) => {
   if (err) {

@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'eval',
   resolve: {
-    root: __dirname + '/source'
+    root: path.join(__dirname, '/source')
   },
   entry: [
     'webpack-hot-middleware/client',
@@ -24,6 +24,10 @@ module.exports = {
       test: /\.js$/,
       loaders: ['babel'],
       include: path.join(__dirname, 'source')
+    },
+    {
+      test: /\.(png|jpg|gif|GIF)$/,
+      loader: 'file?name=assets/[name].[ext]'
     }]
   }
 };

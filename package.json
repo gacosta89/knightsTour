@@ -1,7 +1,7 @@
 {
-  "name": "universal-react-boilerplate",
-  "version": "2.0.2",
-  "description": "A new Webpack boilerplate with hot reloading React components, and error handling on module and component level.",
+  "name": "Knight's Tour",
+  "version": "1.0.0",
+  "description": "A knight's tour is a sequence of moves of a knight on a chessboard such that the knight visits every square only once.",
   "scripts": {
     "clean": "rimraf build",
     "build:webpack": "webpack --config webpack.config.prod.js",
@@ -29,7 +29,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:ericelliott/isomorphic-express-boilerplate.git"
+    "url": "git@github.com:gacosta89/knightsTour.git"
   },
   "devDependencies": {
     "babel-cli": "6.3.17",
@@ -60,7 +60,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ericelliott/isomorphic-express-boilerplate/issues"
+    "url": "https://github.com/gacosta89/knightsTour/issues"
   },
-  "homepage": "https://github.com/ericelliott/isomorphic-express-boilerplate"
+  "homepage": "https://github.com/gacosta89/knightsTour"
 }

@@ -32,6 +32,14 @@ module.exports = {
       test: /\.js$/,
       loaders: ['babel'],
       include: path.join(__dirname, 'source')
+    },
+    {
+      test: /\.(png|jpg|gif|GIF)$/,
+      loader: 'file-loader?name=assets/[name].[ext]'
+    },
+    {
+      test: /\.scss$/,
+      loader: 'style-loader!css-loader!sass-loader'
     }]
   }
 };

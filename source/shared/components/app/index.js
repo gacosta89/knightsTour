@@ -1,14 +1,22 @@
-import createTitle from 'shared/components/title';
+import createViewport from 'shared/components/viewport';
+import createJumbo from 'shared/components/jumbo';
 import createBoard from 'shared/containers/board';
 
+import blueLeatherUrl from 'static/blue-leather-texture.jpg';
+
 export default React => ({ title }) => {
-  const Title = createTitle(React),
-    Board = createBoard(React);
+  const Viewport = createViewport(React),
+    Jumbo = createJumbo(React),
+    Board = createBoard(React),
+    jumboStyle = {
+      background: `url(${blueLeatherUrl})`
+    };
 
   return (
-    <div>
-      <Title title={ title }/>
-      <Board board={ [[1, 1],[0, 1]]}/>
-    </div>
+    <Viewport>
+      <Jumbo style={jumboStyle}>
+        <Board board={ [[1, 1], [0, 1]]}/>
+      </Jumbo>
+    </Viewport>
   );
 };

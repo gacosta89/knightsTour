@@ -27,7 +27,11 @@ module.exports = {
     },
     {
       test: /\.(png|jpg|gif|GIF)$/,
-      loader: 'file?name=assets/[name].[ext]'
+      loader: 'file-loader?name=assets/[name].[ext]'
+    },
+    {
+      test: /\.scss$/,
+      loader: 'style-loader!css-loader!sass-loader'
     }]
   }
 };

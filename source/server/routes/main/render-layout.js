@@ -3,6 +3,22 @@ export default ({title, rootMarkup, payload}) => {
     <!doctype html>
     <html>
       <head>
+        <style>
+          html {
+            height: 100%;
+          }
+          body {
+            height: 100%;
+            display: flex;
+            align-items: strecth;
+            margin: 0;
+          }
+          #root {
+            flex: 1;
+            display: flex;
+            align-items: strecth;
+          }
+        </style>
         <title>${ title }</title>
       </head>
       <body>

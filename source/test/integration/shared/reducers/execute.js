@@ -112,4 +112,12 @@ test('execute reducer', nest => {
     assert.deepEqual(actual, expected, 'It should not set the tour solution.');
     assert.end();
   });
+
+  nest.test('... undefined state and action', assert => {
+    const expected = INITIAL_STATE,
+      actual = reducer(undefined, undefined);
+
+    assert.deepEqual(actual, expected, 'It should return the initial state.');
+    assert.end();
+  });
 });

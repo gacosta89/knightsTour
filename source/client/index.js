@@ -3,12 +3,16 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import createApp from 'shared/components/app';
 import reducer from 'client/reducer';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { tourInit } from 'shared/actions/tour';
 
 import 'static/MorrisRoman-Black.ttf';
 
-const store = createStore(reducer);
+const createStoreWithMiddleware = applyMiddleware(
+  thunk
+)(createStore);
+const store = createStoreWithMiddleware(reducer);
 
 store.dispatch(tourInit([0, 0]));
 const App = createApp(React);

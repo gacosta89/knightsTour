@@ -1,3 +1,4 @@
+import makeReducer from 'shared/util/makeReducer';
 import {
   TOUR_MOVE,
   TOUR_INIT,
@@ -112,13 +113,4 @@ reducers[TOUR_REDO] = ({moves, current, board}) => redo(moves, current, board);
 
 reducers[TOUR_RESET] = () => INITIAL_STATE;
 
-export const reducer = (state = INITIAL_STATE, action = {type: ''}) => {
-  if (!reducers.hasOwnProperty(action.type)) {
-    return state;
-  }
-
-  return {
-    ...state,
-    ...reducers[action.type](state, action)
-  };
-};
+export const reducer = makeReducer({reducers, INITIAL_STATE});

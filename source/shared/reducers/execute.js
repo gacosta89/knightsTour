@@ -1,3 +1,4 @@
+import makeReducer from 'shared/util/makeReducer';
 import {
   EXEC_SET_INTERVAL,
   EXEC_RESUME,
@@ -39,14 +40,4 @@ reducers[EXEC_SET_TOUR] = ({running}, {tour}) => {
   } : { error: 'Wrong tour lenght.' } : { error: 'Already running.' };
 };
 
-export const reducer = (state = INITIAL_STATE, action = {type: ''}) => {
-  if (!reducers.hasOwnProperty(action.type)) {
-    return state;
-  }
-
-  return {
-    ...state,
-    error: undefined,
-    ...reducers[action.type](state, action)
-  };
-};
+export const reducer = makeReducer({reducers, INITIAL_STATE});

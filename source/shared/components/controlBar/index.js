@@ -1,4 +1,5 @@
 import { mapX, mapY } from 'shared/util/coords';
+import createMessage from 'shared/components/message';
 
 const controlBarStyle = {
   display: 'flex',
@@ -39,15 +40,15 @@ const controlBarStyle = {
   },
   spanStyle = {
     padding: 5
-  },
-  messageStyle = {
-    color: 'red',
-    fontSize: 35,
-    display: 'flex',
-    borderRadius: 4
   };
 
 export default React => ({steps, immobulus, x, y, error, onUndo, onRedo, onReset}) => {
+  const messageType = typeof error !== 'undefined' ? 'error' : immobulus ?
+    steps === 64 ? 'success' : 'error' : '',
+    messageText = typeof error !== 'undefined' ? 'Ilegal Move' : immobulus ?
+      steps === 64 ? 'The knight\'s tour is complete.' : 'You are frozen!!.' : '',
+
+    Message = createMessage(React);
   return (
     <div style={controlBarStyle}>
       <div style={controlsStyle}>
@@ -62,17 +63,10 @@ export default React => ({steps, immobulus, x, y, error, onUndo, onRedo, onReset
         </div>
       </div>
       <div style={stateStyle}>
-        <span style={{...spanStyle, color: immobulus ? steps === 64 ? 'white' : 'red' : 'white'}}>
-          {immobulus ? steps === 64 ? 'The knight\'s tour is complete.' : 'You are frozen!!.' : ''}
-        </span>
         <span style={spanStyle}>Visited spots: <span style={{color: 'grey'}}>{steps}</span></span>
         <span style={spanStyle}>Current Position: <span style={{color: 'grey'}}>{mapX[x].toUpperCase()}{mapY[y]}</span></span>
       </div>
-      <div style={{...messageStyle, border: typeof error !== 'undefined' ? 'solid 3px red' : 'none'}}>
-        <span style={spanStyle}>
-          {typeof error !== 'undefined' ? 'Ilegal move.' : ''}
-        </span>
-      </div>
+      <Message type={messageType}>{messageText}</Message>
     </div>
   );
 };

@@ -4,7 +4,8 @@ import {
   tourMove,
   tourInit,
   tourUndo,
-  tourRedo
+  tourRedo,
+  tourReset
 } from 'shared/actions/tour';
 
 test('tour reducer', nest => {
@@ -122,6 +123,45 @@ test('tour reducer', nest => {
       actual = reducer(before, tourMove([1, 1]));
 
     assert.deepEqual(actual, expected, 'It should not set the incorrect coordinate.');
+    assert.end();
+  });
+
+  nest.test('... move after undo', assert => {
+    const before = {
+      ...INITIAL_STATE,
+      moves: [[1, 1], [2, 3], [0, 4], [1, 6]],
+      current: 0,
+      error: undefined,
+      board: [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+      expected = {
+        ...INITIAL_STATE,
+        moves: [[1, 1], [3, 2]],
+        current: 1,
+        error: undefined,
+        board: [
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 1, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 1, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0]
+        ]
+      },
+      actual = reducer(before, tourMove([3, 2]));
+
+    assert.deepEqual(actual, expected, 'It should erase the future.');
     assert.end();
   });
 
@@ -276,6 +316,30 @@ test('tour reducer', nest => {
       actual = reducer(before, tourRedo());
 
     assert.deepEqual(actual, expected, 'It should set current to the next coord and set next coord to 1.');
+    assert.end();
+  });
+
+  nest.test('... reset state.', assert => {
+    const expected = INITIAL_STATE,
+      before = {
+        ...INITIAL_STATE,
+        moves: [[1, 1], [2, 3]],
+        current: 0,
+        error: undefined,
+        board: [
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 1, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0]
+        ]
+      },
+      actual = reducer(before, tourReset());
+
+    assert.deepEqual(actual, expected, 'It should return the initial state.');
     assert.end();
   });
 

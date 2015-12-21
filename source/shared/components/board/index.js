@@ -1,17 +1,19 @@
 import knightIconUrl from 'static/chess-knight-icon.png';
+import gambleChipUrl from 'static/gamble-chip-icon.png';
 import greyWoodUrl from 'static/grey-wood-texture.jpg';
 import blackWoodUrl from 'static/black-wood-texture.jpg';
 
 const boardStyle = {
-  flex: 1,
+  width: 700,
+  height: 700,
   display: 'flex',
   justifyContent: 'center',
   padding: 15
 },
   colStyle = {
-    flex: 1,
+    flex: '1 0 0',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column-reverse'
   },
   cellStyle = {
     flex: '1 0 0',
@@ -19,15 +21,12 @@ const boardStyle = {
     justifyContent: 'center',
     alignItems: 'center',
     cursor: 'pointer'
-  },
-  imgStyle = {
-    width: '80%'
   };
 
 const createCell = React => ({i, j, current, onClickCell, board}) => {
   const content = current[0] === i && current[1] === j ?
-    <img src={knightIconUrl} style={imgStyle}/> :
-      board[i][j] === 1 ? 1 : '';
+    <img src={knightIconUrl} style={{width: '80%'}}/> :
+      board[i][j] === 1 ? <img src={gambleChipUrl} style={{width: '65%'}}/> : '';
   return (
     <div key={j} onClick={onClickCell.bind(this, i, j)}
       style={{

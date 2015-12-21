@@ -26,7 +26,7 @@ module.exports = {
       include: path.join(__dirname, 'source')
     },
     {
-      test: /\.(png|jpg|gif|GIF)$/,
+      test: /\.(png|jpg|gif|GIF|ttf)$/,
       loader: 'file-loader?name=assets/[name].[ext]'
     },
     {

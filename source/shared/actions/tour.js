@@ -31,3 +31,11 @@ export const tourRedo = () => {
     type: TOUR_REDO
   };
 };
+
+export const TOUR_RESET = 'tour_reset';
+
+export const tourReset = () => {
+  return {
+    type: TOUR_RESET
+  };
+};

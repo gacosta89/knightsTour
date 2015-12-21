@@ -6,6 +6,8 @@ import { createStore } from 'redux';
 import { reducer } from 'shared/reducers/tour';
 import { tourInit } from 'shared/actions/tour';
 
+import 'static/MorrisRoman-Black.ttf';
+
 const store = createStore(reducer);
 
 store.dispatch(tourInit([0, 0]));

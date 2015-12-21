@@ -2,7 +2,8 @@ import {
   TOUR_MOVE,
   TOUR_INIT,
   TOUR_UNDO,
-  TOUR_REDO } from 'shared/actions/tour';
+  TOUR_REDO,
+  TOUR_RESET } from 'shared/actions/tour';
 
 export const INITIAL_STATE = {
   moves: [],
@@ -60,7 +61,7 @@ const validateCoords = coord => {
       return {error: 'already been there'};
     }
     return {
-      moves: [...moves, coord],
+      moves: current + 1 < moves.length ? [...moves.slice(0, current + 1), coord] : [...moves, coord],
       current: current + 1,
       error: undefined,
       board: toggleCoord(board, coord),
@@ -108,6 +109,8 @@ reducers[TOUR_INIT] = ({board}, {coord}) => init(validateCoords(coord), board);
 reducers[TOUR_UNDO] = ({moves, current, board}) => undo(moves, current, board);
 
 reducers[TOUR_REDO] = ({moves, current, board}) => redo(moves, current, board);
+
+reducers[TOUR_RESET] = () => INITIAL_STATE;
 
 export const reducer = (state = INITIAL_STATE, action = {type: ''}) => {
   if (!reducers.hasOwnProperty(action.type)) {

@@ -2,8 +2,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import createApp from 'shared/components/app';
+import reducer from 'client/reducer';
 import { createStore } from 'redux';
-import { reducer } from 'shared/reducers/tour';
 import { tourInit } from 'shared/actions/tour';
 
 import 'static/MorrisRoman-Black.ttf';

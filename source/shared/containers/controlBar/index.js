@@ -3,13 +3,13 @@ import createControlBar from 'shared/components/controlBar';
 import { tourUndo, tourRedo, tourReset, tourInit } from 'shared/actions/tour';
 
 // Which part of the Redux global state does our component want to receive as props?
-const mapStateToProps = state => {
+const mapStateToProps = ({tour}) => {
   return {
-    steps: state.current + 1,
-    immobulus: state.immobulus,
-    error: state.error,
-    x: state.moves[state.current][0],
-    y: state.moves[state.current][1]
+    steps: tour.current + 1,
+    immobulus: tour.immobulus,
+    error: tour.error,
+    x: tour.moves[tour.current][0],
+    y: tour.moves[tour.current][1]
   };
 },
   mapDispatchToProps = dispatch => {

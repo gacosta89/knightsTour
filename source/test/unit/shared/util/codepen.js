@@ -7,7 +7,11 @@ test('codepen service', nest => {
     const codepen = codepenFactory.compose(stampit.methods({
       fetch () {
         return new Promise(resolve => {
-          resolve('Hey Im a knight tour solution.');
+          resolve({
+            text () {
+              return 'Hey Im a knight tour solution.';
+            }
+          });
         });
       }
     }))(),

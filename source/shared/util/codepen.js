@@ -1,12 +1,9 @@
 import stampit from 'stampit';
-import nodeFetch from 'node-fetch';
-
-const fetch = typeof window !== 'undefined' ?
-  window.fetch : nodeFetch;
+import 'isomorphic-fetch';
 
 export default stampit().methods({
   fetch,
   getJS (url) {
-    return this.fetch(url);
+    return this.fetch(url).then(res => res.text());
   }
 });

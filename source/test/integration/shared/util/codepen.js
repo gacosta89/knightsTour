@@ -4,9 +4,7 @@ import codepenFactory from 'shared/util/codepen';
 test('codepen integration', nest => {
   nest.test('... getJS', assert => {
     const codepen = codepenFactory(),
-      expected = `(function (){
-        return 'Knights tour test';
-      })();`;
+      expected = '(function (){\n  return \'Knights tour test\';\n})();';
 
     codepen.getJS('http://codepen.io/gacosta89/pen/EPyXXp.js').then(actual => {
       assert.equal(actual, expected, 'It should return the solution.');

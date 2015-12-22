@@ -90,7 +90,7 @@
     "no-empty-character-class": [2],
     "no-empty-label": [2],
     "no-eq-null": [0],
-    "no-eval": [2],
+    "no-eval": [1],
     "no-ex-assign": [2],
     "no-extend-native": [1],
     "no-extra-bind": [2],

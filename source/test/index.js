@@ -6,3 +6,6 @@ import './integration/shared/reducers/import';
 
 //Unit tests
 import './unit/shared/util/codepen';
+import './unit/shared/util/babelTransform';
+import './unit/shared/util/compareEvery';
+import './unit/shared/reducers/import/testSolution';

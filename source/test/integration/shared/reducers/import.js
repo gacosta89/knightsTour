@@ -4,6 +4,7 @@ import {
   impRequestSolution,
   impReceiveSolution,
   impSolution,
+  impValidateSolution,
   impShowPanel,
   impHidePanel
 } from 'shared/actions/import';
@@ -64,6 +65,25 @@ test('import reducer', nest => {
       actual = reducer(before, impHidePanel());
 
       assert.deepEqual(actual, expected, 'It should set showPanel to false.');
+      assert.end();
+  });
+
+  nest.test('... validate incorrect solution', assert => {
+    const before = {
+      ...INITIAL_STATE,
+      isFetching: false,
+      valid: true,
+      solution: '(function (){\n  return \'Knights tour test\';\n})();'
+    },
+      expected = {
+        ...INITIAL_STATE,
+        isFetching: false,
+        valid: false,
+        solution: '(function (){\n  return \'Knights tour test\';\n})();'
+      },
+      actual = reducer(before, impValidateSolution());
+
+      assert.deepEqual(actual, expected, 'It should set valid to false.');
       assert.end();
   });
 });

@@ -6,6 +6,10 @@ import {
   TOUR_REDO,
   TOUR_RESET } from 'shared/actions/tour';
 
+import validateKnightMove from 'shared/reducers/tour/validateKnightMove';
+import exploreKnightMove from 'shared/reducers/tour/exploreKnightMove';
+import validateCoords from 'shared/reducers/tour/validateCoords';
+
 export const INITIAL_STATE = {
   moves: [],
   current: 0,
@@ -23,33 +27,7 @@ export const INITIAL_STATE = {
   immobulus: false
 };
 
-const validateCoords = coord => {
-  return coord[0] >= 0 && coord[0] < 8 &&
-    coord[1] >= 0 && coord[1] < 8 ?
-    coord : undefined;
-},
-  validateKnightMove = (current, next) => {
-    if (typeof next === 'undefined') {
-      return undefined;
-    }
-
-    const dx = Math.abs(current[0] - next[0]),
-      dy = Math.abs(current[1] - next[1]);
-
-    if ((dx === 2) && (dy === 1) ||
-      (dx === 1) && (dy === 2)) {
-        return next;
-      } else {
-        return undefined;
-      }
-  },
-  exploreKnightMove = (coord, board) => {
-    const delta = [[1, 2], [-1, 2], [-2, 1], [-2, -1], [-1, -2], [1, -2], [2, -1], [2, 1]];
-    return delta
-      .filter(d => typeof validateCoords([coord[0] + d[0], coord[1] + d[1]]) !== 'undefined')
-      .some(d => board[coord[0] + d[0]][coord[1] + d[1]] === 0);
-  },
-  toggleCoord = (board, coord) => [
+const toggleCoord = (board, coord) => [
     ...board.slice(0, coord[0]),
     [...board[coord[0]].slice(0, coord[1]), board[coord[0]][coord[1]] === 0 ? 1 : 0, ...board[coord[0]].slice(coord[1] + 1)],
     ...board.slice(coord[0] + 1)

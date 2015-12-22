@@ -38,3 +38,11 @@ export const impHidePanel = () => {
     type: IMP_HIDE_PANEL
   };
 };
+
+export const IMP_VALIDATE_SOLUTION = 'imp_validate_solution';
+
+export const impValidateSolution = () => {
+  return {
+    type: IMP_VALIDATE_SOLUTION
+  };
+};

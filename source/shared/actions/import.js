@@ -17,8 +17,24 @@ export const impReceiveSolution = solution => {
 
 export const IMP_SOLUTION = 'imp_solution';
 
-export const impSolution = getJS => url => dispatch => {
+export const impSolutionFactory = codepen => url => dispatch => {
   dispatch(impRequestSolution());
-  getJS(url)
+  codepen.getJS(url)
     .then(solution => dispatch(impReceiveSolution(solution)));
+};
+
+export const IMP_SHOW_PANEL = 'imp_show_panel';
+
+export const impShowPanel = () => {
+  return {
+    type: IMP_SHOW_PANEL
+  };
+};
+
+export const IMP_HIDE_PANEL = 'imp_hide_panel';
+
+export const impHidePanel = () => {
+  return {
+    type: IMP_HIDE_PANEL
+  };
 };

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import createControlBar from 'shared/components/controlBar';
 import { tourUndo, tourRedo, tourReset, tourInit } from 'shared/actions/tour';
+import { impShowPanel } from 'shared/actions/import';
 
 // Which part of the Redux global state does our component want to receive as props?
 const mapStateToProps = ({tour}) => {
@@ -23,6 +24,9 @@ const mapStateToProps = ({tour}) => {
       onReset () {
         dispatch(tourReset());
         dispatch(tourInit([0, 0]));
+      },
+      onLoad () {
+        dispatch(impShowPanel());
       }
     };
   };

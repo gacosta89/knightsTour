@@ -4,6 +4,7 @@ export default ({title, rootMarkup, payload}) => {
     <html>
       <head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <style>
           @font-face {
             font-family: knightsTourFont;
@@ -11,13 +12,13 @@ export default ({title, rootMarkup, payload}) => {
           }
           html {
             height: 100%;
-            font-family: knightsTourFont;
           }
           body {
             height: 100%;
             display: flex;
             align-items: strecth;
             margin: 0;
+            font-family: knightsTourFont;
           }
           #root {
             flex: 1;

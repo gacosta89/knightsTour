@@ -4,15 +4,15 @@ import compareEvery from 'shared/util/compareEvery';
 
 export default code => {
   try {
-    var f = eval(code);
+    var f = eval(code),
+      tour = f();
   } catch (error) {
     return {
       error
     };
   };
 
-  const tour = f(),
-    tests = [
+  const tests = [
       () => {
         return typeof tour === 'function';
       },
@@ -38,6 +38,6 @@ export default code => {
     ];
 
   return {
-    validate: tests.every(test => test())
+    valid: tests.every(test => test())
   };
 };

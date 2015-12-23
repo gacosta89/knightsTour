@@ -4,7 +4,7 @@ import compare from 'shared/util/compareEvery';
 test('compareEvery', nest => {
   nest.test('... valid array.', assert => {
     const cb = (prev, curr) => {
-      return prev && curr;
+      return Boolean(prev && curr);
     },
       arr = [1, 1, 1, 1, 1],
       expected = true,
@@ -16,9 +16,9 @@ test('compareEvery', nest => {
 
   nest.test('... invalid array.', assert => {
     const cb = (prev, curr) => {
-      return prev && curr;
+      return Boolean(prev && curr);
     },
-      arr = [true, true, false, true, true],
+      arr = [1, 1, 0, 1, 1],
       expected = false,
       actual = compare(arr, cb);
 

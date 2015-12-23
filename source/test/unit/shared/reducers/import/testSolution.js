@@ -5,7 +5,7 @@ test('validateSolution', nest => {
   nest.test('... incorrect solution', assert => {
     const code = '"use strict";\n\n(function () { return {};});',
       expected = {
-        validate: false
+        valid: false
       },
       actual = testSolution(code);
     assert.deepEqual(actual, expected, 'It should not validate the test.');

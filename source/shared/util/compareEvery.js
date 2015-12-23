@@ -4,7 +4,7 @@ export default (arr, cb) => {
   }
   const keys = Object.keys(arr);
 
-  for (let i = 1; i < keys.lenght; i++) {
+  for (let i = 1; i < keys.length; i++) {
     const result = cb(arr[keys[i - 1]], arr[keys[i]]);
     if (typeof result !== 'boolean') {
       throw new Error('Return type of second argument should be boolean.');

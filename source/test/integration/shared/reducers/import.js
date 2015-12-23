@@ -73,13 +73,13 @@ test('import reducer', nest => {
       ...INITIAL_STATE,
       isFetching: false,
       valid: true,
-      solution: '(function (){\n  return \'Knights tour test\';\n})();'
+      solution: '(function (){\n  return function () { return \'Knights tour test\'; };})();'
     },
       expected = {
         ...INITIAL_STATE,
         isFetching: false,
         valid: false,
-        solution: '(function (){\n  return \'Knights tour test\';\n})();'
+        solution: '(function (){\n  return function () { return \'Knights tour test\'; };})();'
       },
       actual = reducer(before, impValidateSolution());
 

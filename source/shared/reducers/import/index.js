@@ -3,12 +3,15 @@ import {
   IMP_REQUEST_SOLUTION,
   IMP_RECEIVE_SOLUTION,
   IMP_SHOW_PANEL,
-  IMP_HIDE_PANEL } from 'shared/actions/import';
+  IMP_HIDE_PANEL,
+  IMP_VALIDATE_SOLUTION } from 'shared/actions/import';
+import testSolution from 'shared/reducers/import/testSolution';
 
 export const INITIAL_STATE = {
   isFetching: false,
   error: undefined,
-  solution: undefined
+  solution: undefined,
+  valid: false
 };
 
 const reducers = {};
@@ -36,6 +39,10 @@ reducers[IMP_HIDE_PANEL] = () => {
   return {
     showPanel: false
   };
+};
+
+reducers[IMP_VALIDATE_SOLUTION] = ({solution}) => {
+  return testSolution(solution);
 };
 
 export const reducer = makeReducer({reducers, INITIAL_STATE});

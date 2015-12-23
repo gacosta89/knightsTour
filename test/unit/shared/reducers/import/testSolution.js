@@ -3,7 +3,7 @@ import testSolution from 'shared/reducers/import/testSolution';
 
 test('validateSolution', nest => {
   nest.test('... incorrect solution', assert => {
-    const code = '"use strict";\n\n(function () { return {};});',
+    const code = '"use strict";\n\n(function () { return {};})();',
       expected = {
         valid: false
       },

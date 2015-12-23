@@ -8,9 +8,9 @@
     "build": "npm run clean && npm run build:webpack",
     "start": "NODE_PATH=source && babel-node devServer.js",
     "server": "NODE_PATH=source && babel-node source/server/index.js",
-    "test": "NODE_PATH=source && babel-node test/index.js",
-    "lint": "eslint source",
-    "watch": "watch 'clear && npm run lint -s && npm run test -s' source",
+    "test": "NODE_PATH=source && babel-node test/index.js | faucet",
+    "lint": "eslint source test",
+    "watch": "watch 'clear && npm run lint -s && npm run test -s' source test",
     "check": "npm run lint && npm run test && npm outdated --depth=0",
     "update": "updtr"
   },
@@ -44,6 +44,7 @@
     "cheerio": "0.19.0",
     "eslint": "1.10.3",
     "eslint-plugin-react": "3.11.3",
+    "faucet": "0.0.1",
     "file-loader": "0.8.5",
     "rimraf": "2.4.4",
     "tap-xunit": "1.2.1",
@@ -57,6 +58,7 @@
   "dependencies": {
     "express": "4.13.3",
     "isomorphic-fetch": "2.2.0",
+    "lodash": "3.10.1",
     "react": "0.14.3",
     "react-dom": "0.14.3",
     "react-redux": "4.0.1",

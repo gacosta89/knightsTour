@@ -9,25 +9,18 @@ import {
 import validateKnightMove from 'shared/reducers/tour/validateKnightMove';
 import exploreKnightMove from 'shared/reducers/tour/exploreKnightMove';
 import validateCoords from 'shared/reducers/tour/validateCoords';
+import generateMatrix from 'shared/util/generateMatrix';
 
 export const INITIAL_STATE = {
   moves: [],
   current: 0,
   error: undefined,
-  board: [
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0]
-  ],
+  board: generateMatrix(8, 8)(0),
   immobulus: false
 };
 
-const toggleCoord = (board, coord) => [
+const validateCoordsIn64 = validateCoords(8, 8),
+  toggleCoord = (board, coord) => [
     ...board.slice(0, coord[0]),
     [...board[coord[0]].slice(0, coord[1]), board[coord[0]][coord[1]] === 0 ? 1 : 0, ...board[coord[0]].slice(coord[1] + 1)],
     ...board.slice(coord[0] + 1)
@@ -81,9 +74,11 @@ const toggleCoord = (board, coord) => [
   },
   reducers = {};
 
-reducers[TOUR_MOVE] = ({moves, current, board}, {coord}) => move(validateKnightMove(moves[current], validateCoords(coord)), moves, current, board);
+reducers[TOUR_MOVE] = ({moves, current, board}, {coord}) =>
+  move(validateCoordsIn64(coord) && validateKnightMove(moves[current], coord) ? coord : undefined,
+    moves, current, board);
 
-reducers[TOUR_INIT] = ({board}, {coord}) => init(validateCoords(coord), board);
+reducers[TOUR_INIT] = ({board}, {coord}) => init(validateCoordsIn64(coord) ? coord : undefined, board);
 
 reducers[TOUR_UNDO] = ({moves, current, board}) => undo(moves, current, board);
 

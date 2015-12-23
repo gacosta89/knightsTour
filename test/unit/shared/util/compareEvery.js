@@ -25,4 +25,16 @@ test('compareEvery', nest => {
     assert.equal(actual, expected, 'It should return false.');
     assert.end();
   });
+
+  nest.test('... empty array.', assert => {
+    const cb = (prev, curr) => {
+      return Boolean(prev && curr);
+    },
+      arr = [],
+      expected = false,
+      actual = compare(arr, cb);
+
+    assert.equal(actual, expected, 'It should return false.');
+    assert.end();
+  });
 });

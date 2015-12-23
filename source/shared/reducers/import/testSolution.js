@@ -4,8 +4,7 @@ import compareEvery from 'shared/util/compareEvery';
 
 export default code => {
   try {
-    var f = eval(code),
-      tour = f();
+    var tour = eval(code);
   } catch (error) {
     return {
       error

@@ -1,9 +1,9 @@
 import test from 'tape';
-import correctTour from 'shared/reducers/import/tests/correctTour';
+import correctTour from 'shared/reducers/import/testSolution/correctTour';
 
 test('correctTour', nest => {
   nest.test('... correct tour', assert => {
-    const tour = [[0, 0], [2, 1], [3, 3]],
+    const tour = () => [[0, 0], [2, 1], [3, 3]],
       expected = true,
       actual = correctTour(8, 8)(tour);
     assert.equal(actual, expected, 'It should return true.');
@@ -11,7 +11,7 @@ test('correctTour', nest => {
   });
 
   nest.test('... incorrect tour', assert => {
-    const tour = [[0, 0], [2, 1], [3, 3], [3, 2]],
+    const tour = () => [[0, 0], [2, 1], [3, 3], [3, 2]],
       expected = false,
       actual = correctTour(8, 8)(tour);
     assert.equal(actual, expected, 'It should return false.');

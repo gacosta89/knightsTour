@@ -1,5 +1,5 @@
 import test from 'tape';
-import fillsBoard from 'shared/reducers/import/tests/fillsBoard';
+import fillsBoard from 'shared/reducers/import/testSolution/fillsBoard';
 
 test('fillsBoard', nest => {
   nest.test('... correct solution', assert => {

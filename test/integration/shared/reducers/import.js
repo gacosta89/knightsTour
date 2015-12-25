@@ -3,7 +3,6 @@ import { INITIAL_STATE, reducer } from 'shared/reducers/import';
 import {
   impRequestSolution,
   impReceiveSolution,
-  impSolution,
   impValidateSolution,
   impShowPanel,
   impHidePanel

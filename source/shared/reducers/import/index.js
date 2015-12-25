@@ -5,7 +5,7 @@ import {
   IMP_SHOW_PANEL,
   IMP_HIDE_PANEL,
   IMP_VALIDATE_SOLUTION } from 'shared/actions/import';
-import testSolution from 'shared/reducers/import/testSolution';
+import testSolution from './testSolution';
 
 export const INITIAL_STATE = {
   isFetching: false,

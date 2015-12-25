@@ -1,5 +1,5 @@
 import test from 'tape';
-import compare from 'shared/util/compareEvery';
+import compare from 'shared/util/comparePair';
 
 test('compareEvery', nest => {
   nest.test('... valid array.', assert => {

@@ -20,6 +20,7 @@ export const INITIAL_STATE = {
 };
 
 const validateCoordsIn64 = validateCoords(8, 8),
+  exploreKnightMoveIn64 = exploreKnightMove(8, 8),
   toggleCoord = (board, coord) => [
     ...board.slice(0, coord[0]),
     [...board[coord[0]].slice(0, coord[1]), board[coord[0]][coord[1]] === 0 ? 1 : 0, ...board[coord[0]].slice(coord[1] + 1)],
@@ -37,7 +38,7 @@ const validateCoordsIn64 = validateCoords(8, 8),
       current: current + 1,
       error: undefined,
       board: toggleCoord(board, coord),
-      immobulus: !exploreKnightMove(coord, board)
+      immobulus: !exploreKnightMoveIn64(coord, board)
     };
   },
   init = (coord, board) => {

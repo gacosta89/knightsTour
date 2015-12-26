@@ -4,7 +4,7 @@ import reactDom from 'react-dom/server';
 const render = reactDom.renderToStaticMarkup;
 
 
-const createDOM = (props) => {
+const createDOM = () => {
   return render(
     <div></div>
   );

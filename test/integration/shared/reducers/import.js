@@ -7,7 +7,6 @@ import {
   impShowPanel,
   impHidePanel
 } from 'shared/actions/import';
-import codepenFactory from 'shared/util/codepen';
 
 test('import reducer', nest => {
   nest.test('... request solution', assert => {
@@ -78,7 +77,8 @@ test('import reducer', nest => {
         ...INITIAL_STATE,
         isFetching: false,
         valid: false,
-        solution: '(function (){\n  return function () { return \'Knights tour test\'; };})();'
+        solution: '(function (){\n  return function () { return \'Knights tour test\'; };})();',
+        error: 'Tour function should return an array.'
       },
       actual = reducer(before, impValidateSolution());
 

@@ -42,7 +42,7 @@ reducers[IMP_HIDE_PANEL] = () => {
 };
 
 reducers[IMP_VALIDATE_SOLUTION] = ({solution}) => {
-  return testSolution(solution);
+  return testSolution(8, 8)(eval(solution));
 };
 
 export const reducer = makeReducer({reducers, INITIAL_STATE});

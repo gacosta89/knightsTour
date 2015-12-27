@@ -71,22 +71,24 @@ const controlBarStyle = {
 export default React =>
   React.createClass({
     render () {
-      const successMessage = this.props.immobulus && this.props.steps === 64 ? 'The knight tour is complete' : '',
-        errorMessage = typeof this.props.error !== 'undefined' ? this.props.error : this.props.immobulus ?
-          this.props.steps < 64 ? 'You are frozen!!' : '' : '',
-        infoMessage = this.props.infoMessage,
+      const { steps, immobulus, error, x, y, infoMessage,
+        onUndo, onRedo, onLoad, onReset
+      } = this.props;
+      const successMessage = immobulus && steps === 64 ? 'The knight tour is complete' : '',
+        errorMessage = typeof error !== 'undefined' ? error : immobulus ?
+          steps < 64 ? 'You are frozen!!' : '' : '',
         Message = createMessage(React);
 
       return (
         <div style={controlBarStyle}>
           <div style={controlsStyle}>
-            <div onClick={this.props.onUndo} style={controlItemStyle}>
+            <div onClick={onUndo} style={controlItemStyle}>
               <i className="material-icons" style={iconStyle}>undo</i>
             </div>
-            <div onClick={this.props.onRedo} style={controlItemStyle}>
+            <div onClick={onRedo} style={controlItemStyle}>
               <i className="material-icons" style={iconStyle}>redo</i>
             </div>
-            <div onClick={() => { this.props.onReset(this.refs.inix.value, this.refs.iniy.value); }} style={restartItemStyle}>
+            <div onClick={() => onReset(this.refs.inix.value, this.refs.iniy.value)} style={restartItemStyle}>
               <i className="material-icons" style={iconStyle}>cached</i>
             </div>
           </div>
@@ -96,10 +98,10 @@ export default React =>
             <input type="text" ref="iniy" style={initialPositionInputStyle}/>
           </div>
           <div style={stateStyle}>
-            <span style={spanStyle}>Visited spots: <span style={{color: 'grey'}}>{this.props.steps}</span></span>
-            <span style={spanStyle}>Current Position: <span style={{color: 'grey'}}>{mapX[this.props.x].toUpperCase()}{mapY[this.props.y]}</span></span>
+            <span style={spanStyle}>Visited spots: <span style={{color: 'grey'}}>{steps}</span></span>
+            <span style={spanStyle}>Current Position: <span style={{color: 'grey'}}>{mapX[x].toUpperCase()}{mapY[y]}</span></span>
           </div>
-          <div style={loadSolutionStyle} onClick={this.props.onLoad}>
+          <div style={loadSolutionStyle} onClick={onLoad}>
             Load Solution
           </div>
           <Message type={errorMessage.length > 0 ? 'error' : 'hidden'}>{errorMessage}</Message>

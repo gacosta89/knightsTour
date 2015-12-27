@@ -2,22 +2,17 @@ import { Modal, Button } from 'react-bootstrap';
 
 export default React => {
   return React.createClass({
-    onLoad () {
-      this.props.onLoad(this.refs.urlInput.value);
-    },
-    onHide () {
-      this.props.onClose();
-    },
     render () {
+      const { showPanel, onClose, onLoad } = this.props;
       return (
-        <Modal show={this.props.showPanel} onHide={this.onHide}>
+        <Modal show={showPanel} onHide={ () => onClose() }>
           <Modal.Header closeButton>
             <h1>Load Your Algorithm.</h1>
           </Modal.Header>
           <Modal.Body>
             <label>Create your <a href="">codepen</a> and paste your url here.</label>
             <input type="url" ref="urlInput"/>
-            <Button onClick={this.onLoad}>
+            <Button onClick={ () => onLoad(this.refs.urlInput.value) }>
               Load
             </Button>
           </Modal.Body>

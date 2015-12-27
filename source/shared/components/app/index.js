@@ -6,15 +6,10 @@ import createBoard from 'shared/containers/board';
 import createControlBar from 'shared/containers/controlBar';
 import createCoord from 'shared/components/coordinates';
 import { mapX as x, mapY as y } from 'shared/util/coords';
-import codepenFactory from 'shared/util/codepen';
-import { impSolutionFactory } from 'shared/actions/import';
 
 import blueLeatherUrl from 'static/blue-leather-texture.jpg';
 
-const codepen = codepenFactory(),
-  impSolution = impSolutionFactory(codepen);
-
-export default React => () => {
+export default ({React, impSolution}) => () => {
   const Viewport = createViewport(React),
     Section = createSection(React),
     Jumbo = createJumbo(React),

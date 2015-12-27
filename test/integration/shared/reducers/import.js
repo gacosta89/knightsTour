@@ -28,7 +28,7 @@ test('import reducer', nest => {
       expected = {
         ...INITIAL_STATE,
         isFetching: false,
-        solution: 'Hey Im a solution'
+        solutionStr: 'Hey Im a solution'
       },
       actual = reducer(before, impReceiveSolution('Hey Im a solution'));
 
@@ -71,16 +71,18 @@ test('import reducer', nest => {
       ...INITIAL_STATE,
       isFetching: false,
       valid: true,
-      solution: '(function (){\n  return function () { return \'Knights tour test\'; };})();'
+      solutionStr: '(function (){\n  return function () { return \'Knights tour test\'; };})();'
     },
       expected = {
         ...INITIAL_STATE,
         isFetching: false,
         valid: false,
-        solution: '(function (){\n  return function () { return \'Knights tour test\'; };})();',
-        error: 'Tour function should return an array.'
+        solutionStr: '(function (){\n  return function () { return \'Knights tour test\'; };})();',
+        solution: 'Knights tour test',
+        error: 'Tour should be a function.'
       },
-      actual = reducer(before, impValidateSolution());
+      preActual = reducer(before, impValidateSolution()),
+      actual = {...preActual, solution: preActual.solution.toString()};
 
       assert.deepEqual(actual, expected, 'It should set valid to false.');
       assert.end();

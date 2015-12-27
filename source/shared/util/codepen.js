@@ -1,9 +1,8 @@
 import stampit from 'stampit';
-import 'isomorphic-fetch';
+import fetchFactory from 'shared/util/fetch';
 
-export default stampit().methods({
-  fetch: typeof window !== 'undefined' ? fetch.bind(window) : fetch,
+export default fetchFactory.compose(stampit().methods({
   getJS (url) {
     return this.fetch(url).then(res => res.text());
   }
-});
+}));

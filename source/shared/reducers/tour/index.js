@@ -42,15 +42,13 @@ const validateCoordsIn64 = validateCoords(8, 8),
     };
   },
   init = (coord, board) => {
-    if (typeof coord === 'undefined') {
-      return {error: 'invalid coordinates'};
-    }
-
+    const validCoords = typeof coord === 'undefined' ? [0, 0] : coord,
+      error = typeof coord === 'undefined' ? 'invalid coordinates' : undefined;
     return {
-      moves: [coord],
+      moves: [validCoords],
       current: 0,
-      error: undefined,
-      board: toggleCoord(board, coord)
+      error,
+      board: toggleCoord(board, validCoords)
     };
   },
   undo = (moves, current, board) => {

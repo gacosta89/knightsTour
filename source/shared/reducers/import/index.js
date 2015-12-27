@@ -6,10 +6,14 @@ import {
   IMP_HIDE_PANEL,
   IMP_VALIDATE_SOLUTION } from 'shared/actions/import';
 import testSolution from './testSolution';
+import validateCoords from 'shared/reducers/tour/validateCoords';
+import generateMatrix from 'shared/util/generateMatrix';
+import updateMatrix from 'shared/util/updateMatrix';
 
 export const INITIAL_STATE = {
   isFetching: false,
-  error: undefined,
+  error: '',
+  solutionStr: '',
   solution: undefined,
   valid: false
 };
@@ -25,7 +29,7 @@ reducers[IMP_REQUEST_SOLUTION] = () => {
 reducers[IMP_RECEIVE_SOLUTION] = (state, {solution}) => {
   return {
     isFetching: false,
-    solution
+    solutionStr: solution
   };
 };
 
@@ -41,8 +45,12 @@ reducers[IMP_HIDE_PANEL] = () => {
   };
 };
 
-reducers[IMP_VALIDATE_SOLUTION] = ({solution}) => {
-  return testSolution(8, 8)(eval(solution));
+reducers[IMP_VALIDATE_SOLUTION] = ({solutionStr}) => {
+  const solution = eval(solutionStr)({validateCoords: validateCoords(8, 8), generateMatrix, updateMatrix});
+  return {
+    ...testSolution(8, 8)(solution),
+    solution
+  };
 };
 
 export const reducer = makeReducer({reducers, INITIAL_STATE});

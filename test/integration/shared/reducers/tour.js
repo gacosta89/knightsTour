@@ -193,7 +193,19 @@ test('tour reducer', nest => {
     const before = INITIAL_STATE,
       expected = {
         ...INITIAL_STATE,
-        error: 'invalid coordinates'
+        error: 'invalid coordinates',
+        moves: [[0, 0]],
+        current: 0,
+        board: [
+          [1, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0]
+        ]
       },
       actual = reducer(before, tourInit([0, 9]));
 

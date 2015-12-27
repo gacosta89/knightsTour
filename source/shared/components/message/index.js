@@ -5,7 +5,10 @@ messageStyle = {
   border: '3px solid',
   fontSize: 35,
   display: 'flex',
-  borderRadius: 4
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: 4,
+  margin: 5
 },
   successStyle = {
     ...messageStyle,
@@ -22,10 +25,14 @@ messageStyle = {
     color: 'white',
     borderColor: 'white'
   },
+  hiddenStyle = {
+    display: 'none'
+  },
   mapType = {
     info: infoStyle,
     error: errorStyle,
-    success: successStyle
+    success: successStyle,
+    hidden: hiddenStyle
   };
 
 export default React => ({type, children}) =>

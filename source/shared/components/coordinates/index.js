@@ -11,4 +11,4 @@ cellStyle = {
   cursor: 'pointer'
 };
 
-export default React => ({coord, style}) => <div style={{...coordStyle, ...style}}>{coord.map(item => <div style={cellStyle}>{item}</div>)}</div>;
+export default React => ({coord, style}) => <div style={{...coordStyle, ...style}}>{coord.map((item, i) => <div style={cellStyle} key={i}>{item}</div>)}</div>;

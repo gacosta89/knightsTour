@@ -15,14 +15,6 @@ export const impReceiveSolution = solution => {
   };
 };
 
-export const IMP_SOLUTION = 'imp_solution';
-
-export const impSolutionFactory = codepen => url => dispatch => {
-  dispatch(impRequestSolution());
-  codepen.getJS(url)
-    .then(solution => dispatch(impReceiveSolution(solution)));
-};
-
 export const IMP_SHOW_PANEL = 'imp_show_panel';
 
 export const impShowPanel = () => {
@@ -45,4 +37,13 @@ export const impValidateSolution = () => {
   return {
     type: IMP_VALIDATE_SOLUTION
   };
+};
+
+export const IMP_SOLUTION = 'imp_solution';
+
+export const impSolutionFactory = ({codepen}) => url => dispatch => {
+  dispatch(impRequestSolution());
+  codepen.getJS(url)
+    .then(solution => dispatch(impReceiveSolution(solution)))
+      .then(() => dispatch(impValidateSolution()));
 };

@@ -13,7 +13,7 @@ test('execute reducer', nest => {
       expected = {
         ...INITIAL_STATE,
         interval: 20,
-        error: undefined
+        error: ''
       },
       actual = reducer(before, execSetInterval(20));
 
@@ -26,7 +26,7 @@ test('execute reducer', nest => {
       ...INITIAL_STATE,
       tour: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      error: undefined
+      error: ''
     },
       expected = {
         ...INITIAL_STATE,
@@ -58,7 +58,7 @@ test('execute reducer', nest => {
       expected = {
         ...INITIAL_STATE,
         running: false,
-        error: undefined
+        error: ''
       },
       actual = reducer(before, execPause());
 
@@ -72,7 +72,7 @@ test('execute reducer', nest => {
         ...INITIAL_STATE,
         tour: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
               1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        error: undefined
+        error: ''
       },
       actual = reducer(before, execSetTour([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
@@ -85,7 +85,7 @@ test('execute reducer', nest => {
     const before = {
       ...INITIAL_STATE,
       running: true,
-      error: undefined
+      error: ''
     },
       expected = {
         ...INITIAL_STATE,

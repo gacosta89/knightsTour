@@ -8,7 +8,7 @@ export const INITIAL_STATE = {
   interval: undefined,
   running: false,
   tour: [],
-  error: undefined
+  error: ''
 };
 
 const reducers = {};

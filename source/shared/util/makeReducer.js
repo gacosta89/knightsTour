@@ -5,7 +5,7 @@ export default ({reducers, INITIAL_STATE}) => (state = INITIAL_STATE, action = {
 
   return {
     ...state,
-    error: undefined,
+    error: '',
     ...reducers[action.type](state, action)
   };
 };

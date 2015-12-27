@@ -41,7 +41,7 @@ export const impValidateSolution = () => {
 
 export const IMP_SOLUTION = 'imp_solution';
 
-export const impSolutionFactory = ({codepen}) => url => dispatch => {
+export const impSolutionFactory = (codepen) => url => dispatch => {
   dispatch(impRequestSolution());
   codepen.getJS(url)
     .then(solution => dispatch(impReceiveSolution(solution)))

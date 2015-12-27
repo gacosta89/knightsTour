@@ -10,9 +10,9 @@ module.exports = {
     './source/client/index'
   ],
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.join(__dirname, 'build/static'),
     filename: 'index.js',
-    publicPath: '/static/'
+    publicPath: 'static/'
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
@@ -34,7 +34,7 @@ module.exports = {
       include: path.join(__dirname, 'source')
     },
     {
-      test: /\.(png|jpg|gif|GIF)$/,
+      test: /\.(png|jpg|gif|GIF|ttf)$/,
       loader: 'file-loader?name=assets/[name].[ext]'
     },
     {

@@ -8,14 +8,12 @@ import thunk from 'redux-thunk';
 import synchronizeExecTourImp from 'shared/middleware/synchronizeExecTourImp';
 import { tourInit } from 'shared/actions/tour';
 import { impSolutionFactory } from 'shared/actions/import';
-import transpileFactory from 'client/util/transpile';
 import codepenFactory from 'shared/util/codepen';
 
 import 'static/MorrisRoman-Black.ttf';
 
 const codepen = codepenFactory(),
-  transpile = transpileFactory({url: '/transpile'}),
-  impSolution = impSolutionFactory({codepen, transpile});
+  impSolution = impSolutionFactory(codepen);
 
 const createStoreWithMiddleware = applyMiddleware(
   thunk,

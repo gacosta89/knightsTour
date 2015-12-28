@@ -7,7 +7,7 @@ export const tourMove = coord => {
   };
 };
 
-export const TOUR_INIT = 'tour_first';
+export const TOUR_INIT = 'tour_init';
 
 export const tourInit = coord => {
   return {

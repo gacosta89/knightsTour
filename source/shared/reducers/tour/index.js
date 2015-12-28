@@ -11,14 +11,6 @@ import exploreKnightMove from 'shared/reducers/tour/exploreKnightMove';
 import validateCoords from 'shared/reducers/tour/validateCoords';
 import generateMatrix from 'shared/util/generateMatrix';
 
-export const INITIAL_STATE = {
-  moves: [[0, 0]],
-  current: 0,
-  error: undefined,
-  board: generateMatrix(8, 8)(0),
-  immobulus: false
-};
-
 const validateCoordsIn64 = validateCoords(8, 8),
   exploreKnightMoveIn64 = exploreKnightMove(8, 8),
   toggleCoord = (board, coord) => [
@@ -41,14 +33,14 @@ const validateCoordsIn64 = validateCoords(8, 8),
       immobulus: !exploreKnightMoveIn64(coord, board)
     };
   },
-  init = (coord, board) => {
+  init = (coord) => {
     const validCoords = typeof coord === 'undefined' ? [0, 0] : coord,
       error = typeof coord === 'undefined' ? 'invalid coordinates' : '';
     return {
       moves: [validCoords],
       current: 0,
       error,
-      board: toggleCoord(board, validCoords)
+      board: toggleCoord(generateMatrix(8, 8)(0), validCoords)
     };
   },
   undo = (moves, current, board) => {
@@ -73,11 +65,19 @@ const validateCoordsIn64 = validateCoords(8, 8),
   },
   reducers = {};
 
+export const INITIAL_STATE = {
+  moves: [[0, 0]],
+  current: 0,
+  error: undefined,
+  board: toggleCoord(generateMatrix(8, 8)(0), [0, 0]),
+  immobulus: false
+};
+
 reducers[TOUR_MOVE] = ({moves, current, board}, {coord}) =>
   move(validateCoordsIn64(coord) && validateKnightMove(moves[current], coord) ? coord : undefined,
     moves, current, board);
 
-reducers[TOUR_INIT] = ({board}, {coord}) => init(validateCoordsIn64(coord) ? coord : undefined, board);
+reducers[TOUR_INIT] = (_, {coord}) => init(validateCoordsIn64(coord) ? coord : undefined);
 
 reducers[TOUR_UNDO] = ({moves, current, board}) => undo(moves, current, board);
 

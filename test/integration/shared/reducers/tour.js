@@ -166,7 +166,22 @@ test('tour reducer', nest => {
   });
 
   nest.test('... first move', assert => {
-    const before = INITIAL_STATE,
+    const before = {
+      ...INITIAL_STATE,
+      moves: [[1, 1], [2, 3], [0, 4], [1, 6]],
+      current: 0,
+      error: '',
+      board: [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
       expected = {
         ...INITIAL_STATE,
         moves: [[2, 3]],

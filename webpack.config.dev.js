@@ -8,7 +8,7 @@ module.exports = {
   },
   entry: [
     'webpack-hot-middleware/client',
-    './source/client/index'
+    './source/client/index.dev'
   ],
   output: {
     path: path.join(__dirname, 'build'),

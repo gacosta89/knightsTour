@@ -30,7 +30,7 @@ test('tour reducer', nest => {
         ...INITIAL_STATE,
         moves: [[1, 1], [2, 3], [4, 2]],
         current: 2,
-        error: undefined,
+        error: '',
         board: [
           [0, 0, 0, 0, 0, 0, 0, 0],
           [0, 1, 0, 0, 0, 0, 0, 0],
@@ -53,7 +53,7 @@ test('tour reducer', nest => {
       ...INITIAL_STATE,
       moves: [[1, 1], [2, 3]],
       current: 1,
-      error: undefined,
+      error: '',
       board: [
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 1, 0, 0, 0, 0, 0, 0],
@@ -92,7 +92,7 @@ test('tour reducer', nest => {
       ...INITIAL_STATE,
       moves: [[1, 1], [2, 3]],
       current: 1,
-      error: undefined,
+      error: '',
       board: [
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 1, 0, 0, 0, 0, 0, 0],
@@ -131,7 +131,7 @@ test('tour reducer', nest => {
       ...INITIAL_STATE,
       moves: [[1, 1], [2, 3], [0, 4], [1, 6]],
       current: 0,
-      error: undefined,
+      error: '',
       board: [
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 1, 0, 0, 0, 0, 0, 0],
@@ -147,7 +147,7 @@ test('tour reducer', nest => {
         ...INITIAL_STATE,
         moves: [[1, 1], [3, 2]],
         current: 1,
-        error: undefined,
+        error: '',
         board: [
           [0, 0, 0, 0, 0, 0, 0, 0],
           [0, 1, 0, 0, 0, 0, 0, 0],
@@ -171,7 +171,7 @@ test('tour reducer', nest => {
         ...INITIAL_STATE,
         moves: [[2, 3]],
         current: 0,
-        error: undefined,
+        error: '',
         board: [
           [0, 0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0, 0],
@@ -218,7 +218,7 @@ test('tour reducer', nest => {
       ...INITIAL_STATE,
       moves: [[1, 1], [2, 3]],
       current: 1,
-      error: undefined,
+      error: '',
       board: [
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 1, 0, 0, 0, 0, 0, 0],
@@ -234,7 +234,7 @@ test('tour reducer', nest => {
         ...INITIAL_STATE,
         moves: [[1, 1], [2, 3]],
         current: 0,
-        error: undefined,
+        error: '',
         board: [
           [0, 0, 0, 0, 0, 0, 0, 0],
           [0, 1, 0, 0, 0, 0, 0, 0],
@@ -257,7 +257,7 @@ test('tour reducer', nest => {
       ...INITIAL_STATE,
       moves: [[1, 1]],
       current: 0,
-      error: undefined,
+      error: '',
       board: [
         [0, 0, 1, 0, 1, 0, 0, 0],
         [0, 1, 0, 0, 0, 1, 0, 0],
@@ -273,7 +273,7 @@ test('tour reducer', nest => {
         ...INITIAL_STATE,
         moves: [[1, 1], [2, 3]],
         current: 1,
-        error: undefined,
+        error: '',
         immobulus: true,
         board: [
           [0, 0, 1, 0, 1, 0, 0, 0],
@@ -297,7 +297,7 @@ test('tour reducer', nest => {
       ...INITIAL_STATE,
       moves: [[1, 1], [2, 3]],
       current: 0,
-      error: undefined,
+      error: '',
       board: [
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 1, 0, 0, 0, 0, 0, 0],
@@ -313,7 +313,7 @@ test('tour reducer', nest => {
         ...INITIAL_STATE,
         moves: [[1, 1], [2, 3]],
         current: 1,
-        error: undefined,
+        error: '',
         board: [
           [0, 0, 0, 0, 0, 0, 0, 0],
           [0, 1, 0, 0, 0, 0, 0, 0],
@@ -337,7 +337,7 @@ test('tour reducer', nest => {
         ...INITIAL_STATE,
         moves: [[1, 1], [2, 3]],
         current: 0,
-        error: undefined,
+        error: '',
         board: [
           [0, 0, 0, 0, 0, 0, 0, 0],
           [0, 1, 0, 0, 0, 0, 0, 0],

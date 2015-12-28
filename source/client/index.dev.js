@@ -1,12 +1,13 @@
 // redux provider
 import { Provider } from 'react-redux';
 // store
-import createStore from 'client/store';
+import createStore from 'client/store/dev';
 // react
 import React from 'react';
 import { render } from 'react-dom';
 // app component
 import createApp from 'shared/components/app';
+import DevTools from 'shared/containers/devTools';
 // actions
 import { impSolutionFactory } from 'shared/actions/import';
 // services
@@ -25,7 +26,10 @@ const props = window.payload || {
 
 render(
   <Provider store={store}>
-    <App { ...props } />
+    <div style={{flex: 1, display: 'flex'}}>
+      <App { ...props } />
+      <DevTools />
+    </div>
   </Provider>,
   document.getElementById('root')
 );

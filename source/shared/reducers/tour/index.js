@@ -12,7 +12,7 @@ import validateCoords from 'shared/reducers/tour/validateCoords';
 import generateMatrix from 'shared/util/generateMatrix';
 
 export const INITIAL_STATE = {
-  moves: [],
+  moves: [[0, 0]],
   current: 0,
   error: undefined,
   board: generateMatrix(8, 8)(0),
@@ -36,14 +36,14 @@ const validateCoordsIn64 = validateCoords(8, 8),
     return {
       moves: current + 1 < moves.length ? [...moves.slice(0, current + 1), coord] : [...moves, coord],
       current: current + 1,
-      error: undefined,
+      error: '',
       board: toggleCoord(board, coord),
       immobulus: !exploreKnightMoveIn64(coord, board)
     };
   },
   init = (coord, board) => {
     const validCoords = typeof coord === 'undefined' ? [0, 0] : coord,
-      error = typeof coord === 'undefined' ? 'invalid coordinates' : undefined;
+      error = typeof coord === 'undefined' ? 'invalid coordinates' : '';
     return {
       moves: [validCoords],
       current: 0,
@@ -57,7 +57,7 @@ const validateCoordsIn64 = validateCoords(8, 8),
     }
     return {
       current: current - 1,
-      error: undefined,
+      error: '',
       board: toggleCoord(board, moves[current])
     };
   },
@@ -67,7 +67,7 @@ const validateCoordsIn64 = validateCoords(8, 8),
     }
     return {
       current: current + 1,
-      error: undefined,
+      error: '',
       board: toggleCoord(board, moves[current + 1])
     };
   },

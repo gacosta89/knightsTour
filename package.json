@@ -4,7 +4,7 @@
   "description": "A knight's tour is a sequence of moves of a knight on a chessboard such that the knight visits every square only once.",
   "scripts": {
     "clean": "rimraf build",
-    "build:webpack": "webpack --config webpack.config.prod.js",
+    "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack && cp source/static/index.html build/",
     "start": "NODE_PATH=source && babel-node devServer.js",
     "test": "NODE_PATH=source && babel-node test/index.js | faucet",
@@ -41,6 +41,9 @@
     "babel-preset-react": "6.3.13",
     "babel-preset-stage-2": "6.3.13",
     "react-transform-hmr": "1.0.1",
+    "redux-devtools": "3.0.1",
+    "redux-devtools-dock-monitor": "1.0.1",
+    "redux-devtools-log-monitor": "1.0.1",
     "eslint": "1.10.3",
     "eslint-plugin-react": "3.11.3",
     "faucet": "0.0.1",

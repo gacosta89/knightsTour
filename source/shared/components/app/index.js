@@ -2,8 +2,8 @@ import createViewport from 'shared/components/viewport';
 import createSection from 'shared/components/section';
 import createJumbo from 'shared/components/jumbo';
 import createLoadPanel from 'shared/containers/loadpanel';
-import createBoard from 'shared/containers/board';
-import createControlBar from 'shared/containers/controlBar';
+import Board from 'shared/containers/board';
+import ControlBar from 'shared/containers/controlBar';
 import createCoord from 'shared/components/coordinates';
 import { mapX as x, mapY as y } from 'shared/util/coords';
 
@@ -14,9 +14,7 @@ export default ({React, impSolution}) => () => {
     Section = createSection(React),
     Jumbo = createJumbo(React),
     LoadPanel = createLoadPanel({impSolution, React}),
-    Board = createBoard(React),
     Coordinates = createCoord(React),
-    ControlBar = createControlBar(React),
     jumboStyle = {
       background: `url(${blueLeatherUrl})`
     };

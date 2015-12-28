@@ -1,3 +1,4 @@
+import React from 'react';
 import { mapX, mapY } from 'shared/util/coords';
 import createMessage from 'shared/components/message';
 
@@ -68,8 +69,7 @@ const controlBarStyle = {
     textAlign: 'center'
   };
 
-export default React =>
-  React.createClass({
+export default React.createClass({
     render () {
       const { steps, immobulus, error, x, y, infoMessage,
         onUndo, onRedo, onLoad, onReset

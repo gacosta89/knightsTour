@@ -68,7 +68,7 @@ const validateCoordsIn64 = validateCoords(8, 8),
 export const INITIAL_STATE = {
   moves: [[0, 0]],
   current: 0,
-  error: undefined,
+  error: '',
   board: toggleCoord(generateMatrix(8, 8)(0), [0, 0]),
   immobulus: false
 };

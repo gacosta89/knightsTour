@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import createControlBar from 'shared/components/controlBar';
+import ControlBar from 'shared/components/controlBar';
 import { tourUndo, tourRedo, tourReset, tourInit } from 'shared/actions/tour';
 import { impShowPanel } from 'shared/actions/import';
 import { getX, getY } from 'shared/util/coords';
@@ -35,7 +35,7 @@ const mapStateToProps = ({tour, imp}) => {
     };
   };
 
-export default React => connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(createControlBar(React));
+)(ControlBar);

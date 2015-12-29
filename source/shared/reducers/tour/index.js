@@ -10,14 +10,10 @@ import validateKnightMove from 'shared/reducers/tour/validateKnightMove';
 import exploreKnightMove from 'shared/reducers/tour/exploreKnightMove';
 import validateCoords from 'shared/reducers/tour/validateCoords';
 import generateMatrix from 'shared/util/generateMatrix';
+import updateMatrix from 'shared/util/updateMatrix';
 
 const validateCoordsIn64 = validateCoords(8, 8),
   exploreKnightMoveIn64 = exploreKnightMove(8, 8),
-  toggleCoord = (board, coord) => [
-    ...board.slice(0, coord[0]),
-    [...board[coord[0]].slice(0, coord[1]), board[coord[0]][coord[1]] === 0 ? 1 : 0, ...board[coord[0]].slice(coord[1] + 1)],
-    ...board.slice(coord[0] + 1)
-  ],
   move = (coord, moves, current, board) => {
     if (typeof coord === 'undefined') {
       return {error: 'invalid move'};
@@ -29,7 +25,7 @@ const validateCoordsIn64 = validateCoords(8, 8),
       moves: current + 1 < moves.length ? [...moves.slice(0, current + 1), coord] : [...moves, coord],
       current: current + 1,
       error: '',
-      board: toggleCoord(board, coord),
+      board: updateMatrix(board, coord, 1),
       immobulus: !exploreKnightMoveIn64(coord, board)
     };
   },
@@ -40,7 +36,7 @@ const validateCoordsIn64 = validateCoords(8, 8),
       moves: [validCoords],
       current: 0,
       error,
-      board: toggleCoord(generateMatrix(8, 8)(0), validCoords)
+      board: updateMatrix(generateMatrix(8, 8)(0), validCoords, 1)
     };
   },
   undo = (moves, current, board) => {
@@ -51,7 +47,7 @@ const validateCoordsIn64 = validateCoords(8, 8),
       current: current - 1,
       error: '',
       immobulus: false,
-      board: toggleCoord(board, moves[current])
+      board: updateMatrix(board, moves[current], 0)
     };
   },
   redo = (moves, current, board) => {
@@ -62,7 +58,7 @@ const validateCoordsIn64 = validateCoords(8, 8),
       current: current + 1,
       error: '',
       immobulus: !exploreKnightMoveIn64(moves[current + 1], board),
-      board: toggleCoord(board, moves[current + 1])
+      board: updateMatrix(board, moves[current + 1], 1)
     };
   },
   reducers = {};
@@ -71,7 +67,7 @@ export const INITIAL_STATE = {
   moves: [[0, 0]],
   current: 0,
   error: '',
-  board: toggleCoord(generateMatrix(8, 8)(0), [0, 0]),
+  board: updateMatrix(generateMatrix(8, 8)(0), [0, 0], 1),
   immobulus: false
 };
 

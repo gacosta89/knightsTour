@@ -50,6 +50,7 @@ const validateCoordsIn64 = validateCoords(8, 8),
     return {
       current: current - 1,
       error: '',
+      immobulus: false,
       board: toggleCoord(board, moves[current])
     };
   },
@@ -60,6 +61,7 @@ const validateCoordsIn64 = validateCoords(8, 8),
     return {
       current: current + 1,
       error: '',
+      immobulus: !exploreKnightMoveIn64(moves[current + 1], board),
       board: toggleCoord(board, moves[current + 1])
     };
   },

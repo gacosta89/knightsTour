@@ -7,7 +7,7 @@ const mapStateToProps = ({tour, exec}) => {
   return {
     board: tour.board,
     current: tour.moves[tour.current],
-    nextMove: exec.tour.length > 0 ? !tour.immobulus ? exec.tour[tour.current + 1] : [] : []
+    nextMove: exec.tour.length > 0 && tour.current + 1 < exec.tour.length ? exec.tour[tour.current + 1] : []
   };
 },
   mapDispatchToProps = dispatch => {

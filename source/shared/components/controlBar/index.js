@@ -1,7 +1,11 @@
 import React from 'react';
 import { mapX, mapY } from 'shared/util/coords';
 import createMessage from 'shared/components/message';
+import Button from 'shared/components/button';
 
+import greyWoodUrl from 'static/grey-wood-texture.jpg';
+
+//styles
 const controlBarStyle = {
   display: 'flex',
   flexDirection: 'column',
@@ -9,36 +13,37 @@ const controlBarStyle = {
   height: 700,
   padding: 15
 },
+  boxStyle = {
+    border: 'solid 3px grey',
+    color: 'grey',
+    borderRadius: 4,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 5,
+    fontSize: 35,
+    background: 'transparent'
+  },
+  boxStyleHovered = {
+    background: `url(${greyWoodUrl})`,
+    border: 'solid 3px transparent',
+    color: 'rgb(51, 51, 51)'
+  },
   controlsStyle = {
     display: 'flex',
     height: 60
   },
   controlItemStyle = {
-    border: 'solid 3px grey',
-    borderRadius: 4,
-    color: 'grey',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-    margin: 5,
-    cursor: 'pointer'
+    ...boxStyle,
+    cursor: 'pointer',
+    flex: 1
   },
   restartItemStyle = {
     ...controlItemStyle,
     flex: 2
   },
   loadSolutionStyle = {
-    border: 'solid 3px grey',
-    borderRadius: 4,
-    color: 'grey',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 5,
-    cursor: 'pointer',
-    height: 50,
-    fontSize: 35
+    ...boxStyle
   },
   iconStyle = {
     fontSize: 35
@@ -56,17 +61,14 @@ const controlBarStyle = {
   initialPositionStyle = {
     display: 'flex',
     alignItems: 'flex-end',
-    height: 60
+    marginTop: 5,
   },
   initialPositionInputStyle = {
-    border: 'solid 3px grey',
-    borderRadius: 4,
-    color: 'white',
-    fontSize: 30,
+    ...boxStyle,
     flex: 1,
-    margin: 5,
-    background: 'transparent',
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'white',
+    height: 50
   };
 
 export default React.createClass({
@@ -82,15 +84,15 @@ export default React.createClass({
       return (
         <div style={controlBarStyle}>
           <div style={controlsStyle}>
-            <div onClick={onUndo} style={controlItemStyle}>
+            <Button onClick={onUndo} style={controlItemStyle} styleHovered={{...controlItemStyle, ...boxStyleHovered}}>
               <i className="material-icons" style={iconStyle}>undo</i>
-            </div>
-            <div onClick={onRedo} style={controlItemStyle}>
+            </Button>
+            <Button onClick={onRedo} style={controlItemStyle} styleHovered={{...controlItemStyle, ...boxStyleHovered}}>
               <i className="material-icons" style={iconStyle}>redo</i>
-            </div>
-            <div onClick={() => onReset(this.refs.inix.value, this.refs.iniy.value)} style={restartItemStyle}>
+            </Button>
+            <Button onClick={() => onReset(this.refs.inix.value, this.refs.iniy.value)} style={restartItemStyle} styleHovered={{...restartItemStyle, ...boxStyleHovered}}>
               <i className="material-icons" style={iconStyle}>cached</i>
-            </div>
+            </Button>
           </div>
           <div style={initialPositionStyle}>
             <span style={{...spanStyle, flex: 2, padding: 0, margin: 5}}> Ini. pos.:</span>
@@ -101,9 +103,9 @@ export default React.createClass({
             <span style={spanStyle}>Visited spots: <span style={{color: 'grey'}}>{steps}</span></span>
             <span style={spanStyle}>Current Position: <span style={{color: 'grey'}}>{mapX[x].toUpperCase()}{mapY[y]}</span></span>
           </div>
-          <div style={loadSolutionStyle} onClick={onLoad}>
+          <Button onClick={onLoad} style={loadSolutionStyle} styleHovered={{...loadSolutionStyle, ...boxStyleHovered}}>
             Load Solution
-          </div>
+          </Button>
           <Message type={errorMessage.length > 0 ? 'error' : 'hidden'}>{errorMessage}</Message>
           <Message type={successMessage.length > 0 ? 'success' : 'hidden'}>{successMessage}</Message>
           <Message type={infoMessage.length > 0 ? 'info' : 'hidden'}>{infoMessage}</Message>

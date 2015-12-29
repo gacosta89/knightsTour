@@ -13,7 +13,7 @@ export default ({React, impSolution}) => () => {
   const Viewport = createViewport(React),
     Section = createSection(React),
     Jumbo = createJumbo(React),
-    LoadPanel = createLoadPanel({impSolution, React}),
+    LoadPanel = createLoadPanel({impSolution}),
     Coordinates = createCoord(React),
     jumboStyle = {
       background: `url(${blueLeatherUrl})`

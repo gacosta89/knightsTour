@@ -126,45 +126,6 @@ test('tour reducer', nest => {
     assert.end();
   });
 
-  nest.test('... move after undo', assert => {
-    const before = {
-      ...INITIAL_STATE,
-      moves: [[1, 1], [2, 3], [0, 4], [1, 6]],
-      current: 0,
-      error: '',
-      board: [
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 1, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0]
-      ]
-    },
-      expected = {
-        ...INITIAL_STATE,
-        moves: [[1, 1], [3, 2]],
-        current: 1,
-        error: '',
-        board: [
-          [0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 1, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 1, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0]
-        ]
-      },
-      actual = reducer(before, tourMove([3, 2]));
-
-    assert.deepEqual(actual, expected, 'It should erase the future.');
-    assert.end();
-  });
-
   nest.test('... first move', assert => {
     const before = {
       ...INITIAL_STATE,
@@ -234,6 +195,7 @@ test('tour reducer', nest => {
       moves: [[1, 1], [2, 3]],
       current: 1,
       error: '',
+      immobulus: true,
       board: [
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 1, 0, 0, 0, 0, 0, 0],
@@ -250,6 +212,7 @@ test('tour reducer', nest => {
         moves: [[1, 1], [2, 3]],
         current: 0,
         error: '',
+        immobulus: false,
         board: [
           [0, 0, 0, 0, 0, 0, 0, 0],
           [0, 1, 0, 0, 0, 0, 0, 0],
@@ -264,6 +227,45 @@ test('tour reducer', nest => {
       actual = reducer(before, tourUndo());
 
     assert.deepEqual(actual, expected, 'It should set current to the prev coord and set last coord to 0.');
+    assert.end();
+  });
+
+  nest.test('... move after undo', assert => {
+    const before = {
+      ...INITIAL_STATE,
+      moves: [[1, 1], [2, 3], [0, 4], [1, 6]],
+      current: 0,
+      error: '',
+      board: [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+      expected = {
+        ...INITIAL_STATE,
+        moves: [[1, 1], [3, 2]],
+        current: 1,
+        error: '',
+        board: [
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 1, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 1, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0]
+        ]
+      },
+      actual = reducer(before, tourMove([3, 2]));
+
+    assert.deepEqual(actual, expected, 'It should erase the future.');
     assert.end();
   });
 

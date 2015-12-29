@@ -2,7 +2,7 @@
 import './integration/shared/reducers/tour';
 import './integration/shared/reducers/execute';
 import './integration/shared/reducers/import';
-// import './integration/shared/util/codepen';
+import './integration/shared/util/codepen';
 // import './integration/shared/reducers/import/testSolution/correctInitialPosition';
 // import './integration/shared/reducers/import/testSolution/correctTour';
 // import './integration/shared/reducers/import/testSolution/fillsBoard';

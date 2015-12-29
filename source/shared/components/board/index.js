@@ -45,7 +45,7 @@ const Cell = React.createClass({
   }
 });
 
-export default React.createClass({
+export default () => React.createClass({
   render () {
     const {board, current, nextMove, onClickCell} = this.props;
     return (

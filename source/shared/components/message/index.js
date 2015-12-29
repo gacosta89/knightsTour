@@ -1,3 +1,5 @@
+import React from 'react';
+
 const spanStyle = {
   padding: 5
 },
@@ -35,7 +37,7 @@ messageStyle = {
     hidden: hiddenStyle
   };
 
-export default React => ({type, children}) =>
+export default () => ({type, children}) =>
   <div style={mapType[type]}>
     <span style={spanStyle}>
       {children}

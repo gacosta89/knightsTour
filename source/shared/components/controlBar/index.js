@@ -1,7 +1,7 @@
 import React from 'react';
 import { mapX, mapY } from 'shared/util/coords';
 import createMessage from 'shared/components/message';
-import Button from 'shared/components/button';
+import createButton from 'shared/components/button';
 
 import greyWoodUrl from 'static/grey-wood-texture.jpg';
 
@@ -71,7 +71,7 @@ const controlBarStyle = {
     height: 50
   };
 
-export default React.createClass({
+export default () => React.createClass({
     render () {
       const { steps, immobulus, error, x, y, infoMessage,
         onUndo, onRedo, onLoad, onReset
@@ -79,7 +79,8 @@ export default React.createClass({
       const successMessage = immobulus && steps === 64 ? 'The knight tour is complete' : '',
         errorMessage = error !== '' ? error : immobulus ?
           steps < 64 ? 'You are frozen!!' : '' : '',
-        Message = createMessage(React);
+        Message = createMessage(),
+        Button = createButton();
 
       return (
         <div style={controlBarStyle}>

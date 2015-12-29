@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-export default React.createClass({
+export default () => React.createClass({
   displayName: 'KTButton',
   getInitialState () {
     return {

@@ -1,3 +1,5 @@
+import React from 'react';
+
 const coordStyle = {
   display: 'flex',
   justifyContent: 'center',
@@ -11,4 +13,4 @@ cellStyle = {
   cursor: 'pointer'
 };
 
-export default React => ({coord, style}) => <div style={{...coordStyle, ...style}}>{coord.map((item, i) => <div style={cellStyle} key={i}>{item}</div>)}</div>;
+export default () => ({coord, style}) => <div style={{...coordStyle, ...style}}>{coord.map((item, i) => <div style={cellStyle} key={i}>{item}</div>)}</div>;

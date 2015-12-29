@@ -1,3 +1,4 @@
+import React from 'react';
 import backgroundUrl from 'static/background.jpg';
 
 const viewportStyle = {
@@ -9,4 +10,4 @@ const viewportStyle = {
   alignItems: 'center'
 };
 
-export default React => ({children}) => <div style={viewportStyle}>{children}</div>;
+export default () => ({children}) => <div style={viewportStyle}>{children}</div>;

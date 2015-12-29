@@ -1,20 +1,23 @@
+import React from 'react';
 import createViewport from 'shared/components/viewport';
 import createSection from 'shared/components/section';
 import createJumbo from 'shared/components/jumbo';
 import createLoadPanel from 'shared/containers/loadpanel';
-import Board from 'shared/containers/board';
-import ControlBar from 'shared/containers/controlBar';
+import createBoard from 'shared/containers/board';
+import createControlBar from 'shared/containers/controlBar';
 import createCoord from 'shared/components/coordinates';
 import { mapX as x, mapY as y } from 'shared/util/coords';
 
 import blueLeatherUrl from 'static/blue-leather-texture.jpg';
 
-export default ({React, impSolution}) => () => {
-  const Viewport = createViewport(React),
-    Section = createSection(React),
-    Jumbo = createJumbo(React),
+export default ({impSolution}) => () => {
+  const Viewport = createViewport(),
+    Section = createSection(),
+    Jumbo = createJumbo(),
+    Board = createBoard(),
+    ControlBar = createControlBar(),
     LoadPanel = createLoadPanel({impSolution}),
-    Coordinates = createCoord(React),
+    Coordinates = createCoord(),
     jumboStyle = {
       background: `url(${blueLeatherUrl})`
     };

@@ -18,7 +18,7 @@ const store = createStore(),
   codepen = codepenFactory(),
   impSolution = impSolutionFactory(codepen);
 
-const App = createApp({React, impSolution});
+const App = createApp({impSolution});
 const props = window.payload || {
   title: 'Default client title'
 };

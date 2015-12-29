@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
-import Button from 'shared/components/button';
+import createButton from 'shared/components/button';
 
 import blackWoodUrl from 'static/black-wood-texture.jpg';
 import whiteWoodUrl from 'static/white-wood-texture.jpg';
@@ -39,9 +39,10 @@ const modalStyle = {
     textAlign: 'center'
   };
 
-export default React.createClass({
+export default () => React.createClass({
   render () {
-    const { showPanel, onClose, onLoad } = this.props;
+    const { showPanel, onClose, onLoad } = this.props,
+      Button = createButton();
     return (
       <Modal show={showPanel} onHide={ () => onClose() } >
         <div style={modalStyle}>

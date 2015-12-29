@@ -1,3 +1,5 @@
+import React from 'react';
+
 const jumboStyle = {
   backgroundColor: 'white',
   borderRadius: '6',
@@ -7,4 +9,4 @@ const jumboStyle = {
   alignItems: 'stretch',
   margin: 20
 };
-export default React => ({children, style}) => <div style={{...jumboStyle, ...style}}>{children}</div>;
+export default () => ({children, style}) => <div style={{...jumboStyle, ...style}}>{children}</div>;

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import LoadPanel from 'shared/components/loadpanel';
+import createLoadPanel from 'shared/components/loadpanel';
 import { impHidePanel } from 'shared/actions/import';
 
 // Which part of the Redux global state does our component want to receive as props?
@@ -24,5 +24,5 @@ export default ({impSolution}) => {
   return connect(
     mapStateToProps,
     mapDispatchToProps
-  )(LoadPanel);
+  )(createLoadPanel());
 };

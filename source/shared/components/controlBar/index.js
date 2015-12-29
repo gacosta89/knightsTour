@@ -75,7 +75,7 @@ export default React.createClass({
         onUndo, onRedo, onLoad, onReset
       } = this.props;
       const successMessage = immobulus && steps === 64 ? 'The knight tour is complete' : '',
-        errorMessage = typeof error !== 'undefined' ? error : immobulus ?
+        errorMessage = error !== '' ? error : immobulus ?
           steps < 64 ? 'You are frozen!!' : '' : '',
         Message = createMessage(React);
 

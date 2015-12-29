@@ -27,7 +27,7 @@ export default ({React, impSolution}) => () => {
         </Jumbo>
         <Section style={{flexDirection: 'column'}}>
           <Jumbo style={jumboStyle}>
-            <Board board={ [[1, 1], [0, 1]]}/>
+            <Board />
           </Jumbo>
           <Jumbo style={jumboStyle}>
             <Coordinates coord={x.map( s => s.toUpperCase())} style={{height: 40, width: 700, fontSize: 35, color: 'grey'}} />

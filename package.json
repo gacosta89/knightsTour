@@ -4,12 +4,12 @@
   "description": "A knight's tour is a sequence of moves of a knight on a chessboard such that the knight visits every square only once.",
   "scripts": {
     "clean": "rimraf build",
-    "build:webpack": ".\\scripts\\prod.env.bat && webpack --config webpack.config.prod.js && copy .\\source\\static\\index.html .\\build\\",
-    "build": "npm run clean && npm run build:webpack",
-    "start": ".\\scripts\\env.bat && babel-node devServer.js",
-    "test": ".\\scripts\\env.bat && babel-node test/index.js | faucet",
+    "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build": "npm run clean && npm run build:webpack && cp source/static/index.html build/",
+    "start": "NODE_PATH=source && babel-node devServer.js",
+    "test": "NODE_PATH=source && babel-node test/index.js | faucet",
     "lint": "eslint source test",
-    "watch": "watch \"cls && npm run lint -s && npm run test -s\" source test",
+    "watch": "watch 'clear && npm run lint -s && npm run test -s' source test",
     "check": "npm run lint && npm run test && npm outdated --depth=0",
     "update": "updtr"
   },

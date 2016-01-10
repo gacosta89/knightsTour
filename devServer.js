@@ -6,6 +6,8 @@ import config from './webpack.config.dev';
 
 const app = express();
 const compiler = webpack(config);
+const port = process.env.APP_PORT || 3000;
+const ip = process.env.APP_IP || 'localhost';
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
@@ -18,11 +20,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'source/static/index.html'));
 });
 
-app.listen(3000, 'localhost', (err) => {
+app.listen(port, ip, (err) => {
   if (err) {
     console.log(err);
     return;
   }
 
-  console.log('Listening at http://localhost:3000');
+  console.log(`Listening at http://${ip}:${port}`);
 });

@@ -3,7 +3,7 @@ web:
   ports:
     - "3000:3000"
   volumes:
-    - .:/knightsTour
+    - .:/home/knightsTour
   environment:
     - APP_IP=0.0.0.0
     - APP_PORT=3000

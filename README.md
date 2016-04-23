@@ -2,7 +2,7 @@
 
 Simple console with history and redux data flow.
 
-[![Circle CI](https://circleci.com/gh/gacosta89/knights-tour.svg)](https://circleci.com/gh/gacosta89/knights-tour)
+[![Circle CI](https://circleci.com/gh/gacosta89/knightsTour.svg)](https://circleci.com/gh/gacosta89/knightsTour)
 ## Contents
 
 - [Description](#description)
@@ -33,6 +33,23 @@ Build the project into build directory:
 Start the dev mode with hot reloading:
     npm run start
 
+## Usage
+
+To load your algorithm click the Load Solution button, then paste the url of your codepen with the .js extension.
+This is my algorithm:
+
+- [http://codepen.io/gacosta89/pen/NxRwpG.js](http://codepen.io/gacosta89/pen/NxRwpG.js)
+
+As you can see you can write ES6 code and then codepen will transpile it to ES5.
+The firm of the function that resolves the knights tour should be:
+
+    (() => ({ validateCoords, generateMatrix, updateMatrix }) => {
+      return ([x, y]) => ...
+    })();
+
+It is an iife that curries two functions, the first gets some utility pure functions (validateCoords, generateMatrix, updateMatrix) and should return
+a function that takes the initial position array and returns the 64 moves in an array.
+
 ## Screenshots
 
 ![Alt text](/source/static/knightsTour.png?raw=true "Knights Tour")
@@ -41,5 +58,4 @@ Start the dev mode with hot reloading:
 
 - [Eric Eliott](https://medium.com/@_ericelliott)
 - [redux](https://reduxframework.com/)
-- [immutable-js](https://facebook.github.io/immutable-js/)
-- [keypress](https://www.npmjs.com/package/keypress)
+- [reactjs](https://facebook.github.io/react/)

@@ -65,7 +65,7 @@ const controlBarStyle = {
   },
   initialPositionInputStyle = {
     ...boxStyle,
-    flex: 1,
+    width: 70,
     textAlign: 'center',
     color: 'white',
     height: 50
@@ -96,7 +96,7 @@ export default () => React.createClass({
             </Button>
           </div>
           <div style={initialPositionStyle}>
-            <span style={{...spanStyle, flex: 2, padding: 0, margin: 5}}> Ini. pos.:</span>
+            <span style={{...spanStyle, flex: 1, padding: 0, margin: 5}}> Ini. pos.:</span>
             <input type="text" ref="inix" style={initialPositionInputStyle}/>
             <input type="text" ref="iniy" style={initialPositionInputStyle}/>
           </div>

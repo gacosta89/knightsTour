@@ -1,0 +1,21 @@
+general:
+  branches:
+    ignore:
+      - gh-pages # list of branches to ignore
+
+machine:
+  services:
+    - docker
+
+test:
+  pre:
+    - docker-compose build
+    - docker-compose up -d
+  override:
+    - docker-compose run web ./node_modules/.bin/eslint --quiet source test --format tap | ./node_modules/.bin/tap-xunit > lint.xml
+    - docker-compose run web /bin/bash -c "NODE_PATH=source ./node_modules/.bin/babel-node test | ./node_modules/.bin/tap-xunit > test.xml"
+    - npm outdated --depth=0
+    - curl --retry 10 --retry-delay 5 -v http://localhost:3000
+  post:
+    - cp ./lint.xml ${CIRCLE_TEST_REPORTS}/lint.xml
+    - cp ./test.xml ${CIRCLE_TEST_REPORTS}/test.xml

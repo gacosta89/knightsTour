@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import createButton from 'shared/components/button';
+import createMessage from 'shared/components/message';
 
 import blackWoodUrl from 'static/black-wood-texture.jpg';
 import whiteWoodUrl from 'static/white-wood-texture.jpg';
@@ -41,8 +42,14 @@ const modalStyle = {
 
 export default () => React.createClass({
   render () {
-    const { showPanel, onClose, onLoad } = this.props,
-      Button = createButton();
+    const {
+      showPanel,
+      onClose,
+      onLoad,
+      infoMessage = ''
+    } = this.props,
+      Button = createButton(),
+      Message = createMessage();
     return (
       <Modal show={showPanel} onHide={ () => onClose() } >
         <div style={modalStyle}>
@@ -50,12 +57,18 @@ export default () => React.createClass({
             <h1>Load Your Algorithm.</h1>
           </Modal.Header>
           <Modal.Body style={modalBodyStyle}>
-            <label>Create your <a href="http://codepen.io/">pen</a> and paste your codepen ID here.</label>
+            <label>Create your <a href="http://codepen.io/">pen</a> and paste the URL here.</label>
             <input type="url" ref="urlInput" style={inputStyle}/>
             <Button onClick={ () => onLoad(this.refs.urlInput.value) }
               style={loadStyle} styleHovered={loadStyleHovered}>
               Load
             </Button>
+            { infoMessage.length > 0 ?
+              <label>
+                Your solution didn't pass the folowing test:
+              </label> : ''
+            }
+            <Message type={infoMessage.length > 0 ? 'infoDark' : 'hidden'}>{infoMessage}</Message>
           </Modal.Body>
         </div>
       </Modal>

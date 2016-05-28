@@ -6,7 +6,10 @@ import { impHidePanel } from 'shared/actions/import';
 export default ({impSolution}) => {
   const mapStateToProps = ({imp}) => {
     return {
-      showPanel: imp.showPanel
+      showPanel: imp.showPanel,
+      infoMessage: imp.valid === false ?
+          imp.error :
+          ''
     };
   },
     mapDispatchToProps = dispatch => {

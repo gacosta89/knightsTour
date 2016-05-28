@@ -10,7 +10,8 @@ messageStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: 4,
-  margin: 5
+  margin: 5,
+  cursor: 'default'
 },
   successStyle = {
     ...messageStyle,
@@ -27,11 +28,17 @@ messageStyle = {
     color: 'white',
     borderColor: 'white'
   },
+  infoDarkStyle = {
+    ...messageStyle,
+    color: 'rgb(51, 51, 51)',
+    borderColor: 'rgb(51, 51, 51)'
+  },
   hiddenStyle = {
     display: 'none'
   },
   mapType = {
     info: infoStyle,
+    infoDark: infoDarkStyle,
     error: errorStyle,
     success: successStyle,
     hidden: hiddenStyle

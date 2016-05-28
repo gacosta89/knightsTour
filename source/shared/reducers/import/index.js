@@ -44,13 +44,14 @@ reducers[IMP_HIDE_PANEL] = () => {
     showPanel: false
   };
 };
-
+/* eslint-disable no-eval*/
 reducers[IMP_VALIDATE_SOLUTION] = ({solutionStr}) => {
-  const solution = eval(solutionStr)({validateCoords: validateCoords(8, 8), generateMatrix, updateMatrix});
+  const solution = eval(solutionStr)({validateCoords, generateMatrix, updateMatrix});
   return {
     ...testSolution(8, 8)(solution),
     solution
   };
 };
+/*eslint-disable no-eval*/
 
 export const reducer = makeReducer({reducers, INITIAL_STATE});

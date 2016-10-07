@@ -32,7 +32,7 @@ Clone knightsTour from github
 
 You can either build the project or start the project in dev mode:
 
-Build the project into build directory:
+Build the project:
 
     npm run build
 Start the dev mode with hot reloading:
@@ -46,7 +46,10 @@ This is my algorithm:
 
 - [http://codepen.io/gacosta89/pen/NxRwpG.js](http://codepen.io/gacosta89/pen/NxRwpG.js)
 
-As you can see you can write ES6 code and then codepen will transpile it to ES5.
+You can see the ES6 code in the following link. Codepen will do the job of transpiling it to ES5.
+
+- [http://codepen.io/gacosta89/pen/NxRwpG](http://codepen.io/gacosta89/pen/NxRwpG)
+
 The signature of the function that resolves the knights tour should be:
 
     (() => ({ validateCoords, generateMatrix, updateMatrix }) => {

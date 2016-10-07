@@ -45,7 +45,7 @@ This is my algorithm:
 - [http://codepen.io/gacosta89/pen/NxRwpG.js](http://codepen.io/gacosta89/pen/NxRwpG.js)
 
 As you can see you can write ES6 code and then codepen will transpile it to ES5.
-The firm of the function that resolves the knights tour should be:
+The signature of the function that resolves the knights tour should be:
 
     (() => ({ validateCoords, generateMatrix, updateMatrix }) => {
       return ([x, y]) => ...

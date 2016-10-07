@@ -33,8 +33,10 @@ Clone knightsTour from github
 You can either build the project or start the project in dev mode:
 
 Build the project into build directory:
+
     npm run build
 Start the dev mode with hot reloading:
+
     npm run start
 
 ## Usage

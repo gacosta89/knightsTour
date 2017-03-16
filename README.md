@@ -1,7 +1,5 @@
 # Knights Tour
 
-Simple console with history and redux data flow.
-
 [![Circle CI](https://circleci.com/gh/gacosta89/knightsTour.svg)](https://circleci.com/gh/gacosta89/knightsTour)
 ## Contents
 

@@ -42,11 +42,11 @@ Start the dev mode with hot reloading:
 To load your algorithm click the Load Solution button, then paste the url of your codepen with the .js extension.
 This is my algorithm:
 
-- [http://codepen.io/gacosta89/pen/NxRwpG.js](http://codepen.io/gacosta89/pen/NxRwpG.js)
+- [https://codepen.io/gacosta89/pen/NxRwpG.js](https://codepen.io/gacosta89/pen/NxRwpG.js)
 
 You can see the ES6 code in the following link. Codepen will do the job of transpiling it to ES5.
 
-- [http://codepen.io/gacosta89/pen/NxRwpG](http://codepen.io/gacosta89/pen/NxRwpG)
+- [https://codepen.io/gacosta89/pen/NxRwpG](https://codepen.io/gacosta89/pen/NxRwpG)
 
 The signature of the function that resolves the knights tour should be:
 

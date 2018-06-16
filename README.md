@@ -11,7 +11,7 @@
 
 ## Live in
 
-[http://gacosta89.github.io/knightsTour](http://gacosta89.github.io/knightsTour)
+[https://gacosta89.github.io/knightsTour](http://gacosta89.github.io/knightsTour)
 
 ## Description
 
